@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>{{ twitter_name }}さんのが最近よくツイートした単語</h1>
+<ul class="list-group list-group-flush">
+      {% for k, v in result %}
+        <li class="list-group-item">{{ k }} ・・・{{ v }} 回</li>
+      {% endfor %}
+</ul>
+<p>形態素解析ライブラリ『MeCab』を使用しています</p>
+{% endblock %}

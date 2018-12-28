@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block body %}
+<h1>あの人のツイート傾向を分析しよう！</h1>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <input name="twitter_name" id="twitter_name" type="text" class="form-control" placeholder="Twitterのユーザー名" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+<form action="{{ url_for('view', twitter_name='') }}" method="GET">
+    <button type="button" id="analyze" class="btn btn-info">分析する</button>
+</form>
+ <p>形態素解析ライブラリ『MeCab』を使用しています</p>
+ 
+<script>
+    $(function() {
+        $('#analyze').on('click', function() {
+            var $form = $('form');
+            $form.attr('action', $form.attr('action') + $('#twitter_name').val());
+            $form.submit();
+        })
+    });
+</script>
+{% endblock %}
